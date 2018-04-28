@@ -12,16 +12,24 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import messages from './messages';
+import Header from '../../components/Header';
+import PersistentDrawer from '../../components/Drawer/PersistentDrawer';
+
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <b>Playground</b>
-      /*
-      <h1>
-        <FormattedMessage {...messages.header} />
-      </h1>
-      */      
+      <div>
+        {/*
+        <Header />
+        */}
+        <PersistentDrawer />
+        {/*
+        <h1>
+          <FormattedMessage {...messages.body} />
+        </h1>
+        */}
+      </div>
     );
   }
 }
