@@ -15,7 +15,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { mailFolderListItems, otherMailFolderListItems } from './sampleData';
-
+import { Link } from 'react-router-dom';
 import AuditPhasesList from '../AuditPhasesList';
 
 
@@ -186,6 +186,9 @@ class PersistentDrawer extends React.Component {
             <div className={classes.drawerHeader} />
             <h1>Welcome</h1>
             <Typography>{'You think water moves fast? You should see ice.'}</Typography>
+            <ul>
+              <li><Link to="/audits">Audits</Link></li>
+            </ul>
           </main>
           {after}
         </div>
