@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import List from 'material-ui/List';
+
 import { MenuItem } from 'material-ui/Menu';
 import Typography from 'material-ui/Typography';
 import TextField from 'material-ui/TextField';
@@ -16,8 +16,18 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { mailFolderListItems, otherMailFolderListItems } from './sampleData';
 import { Link } from 'react-router-dom';
-import AuditPhasesList from '../AuditPhasesList';
+import StarIcon from '@material-ui/icons/Star';
+import GroupIcon from '@material-ui/icons/Group';
+import EventNoteIcon from '@material-ui/icons/EventNote';
 
+import List, { ListItem, ListItemText, ListItemIcon } from 'material-ui/List';
+import ImageIcon from '@material-ui/icons/Image';
+import WorkIcon from '@material-ui/icons/Work';
+import BeachAccessIcon from '@material-ui/icons/BeachAccess';
+import Avatar from 'material-ui/Avatar';
+
+import AuditPhasesList from '../AuditPhasesList';
+import AuditTabs from '../AuditTabs';
 
 const drawerWidth = 320;
 
@@ -75,6 +85,7 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
+    marginTop: theme.spacing.unit * 5,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -120,7 +131,10 @@ class PersistentDrawer extends React.Component {
     });
   };
 
-  render() {
+
+
+
+render() {
     const { classes, theme } = this.props;
     const { anchor, open } = this.state;
 
@@ -140,6 +154,23 @@ class PersistentDrawer extends React.Component {
         </div>
         <Divider />
         <AuditPhasesList />
+        <Divider />
+
+        <List component="nav">
+          <ListItem button>
+            <ListItemIcon>
+              <GroupIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Users"/>
+          </ListItem>
+
+          <ListItem button>
+            <ListItemIcon>
+              <EventNoteIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Action Logs"/>
+          </ListItem>
+        </List>
 
       </Drawer>
     );
@@ -161,6 +192,7 @@ class PersistentDrawer extends React.Component {
               [classes.appBarShift]: open,
               [classes[`appBarShift-${anchor}`]]: open,
             })}
+            color="primary"
           >
             <Toolbar disableGutters={!open}>
               <IconButton
@@ -172,23 +204,21 @@ class PersistentDrawer extends React.Component {
                 <MenuIcon />
               </IconButton>
               <Typography variant="title" color="inherit" noWrap>
-                My App
+                ABC
               </Typography>
             </Toolbar>
           </AppBar>
           {before}
+
           <main
             className={classNames(classes.content, classes[`content-${anchor}`], {
               [classes.contentShift]: open,
               [classes[`contentShift-${anchor}`]]: open,
             })}
           >
-            <div className={classes.drawerHeader} />
-            <h1>Welcome</h1>
-            <Typography>{'You think water moves fast? You should see ice.'}</Typography>
-            <ul>
-              <li><Link to="/audits">Audits</Link></li>
-            </ul>
+
+            <AuditTabs/>
+
           </main>
           {after}
         </div>
